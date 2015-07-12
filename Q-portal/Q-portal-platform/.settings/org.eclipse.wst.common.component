@@ -4,6 +4,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="Q-basic-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Q-basic/Q-basic">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="beyondts-basic-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/beyondts-basic/beyondts-basic">
             <dependency-type>uses</dependency-type>
         </dependent-module>

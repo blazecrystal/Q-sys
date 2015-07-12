@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+	<description><![CDATA["Some tags for common usage in web pages"]]></description>
+	<display-name></display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>beyondts</short-name>
+	<uri>/beyondts-tags</uri>
+	<tag>
+		<description>
+		    <![CDATA["
+		    Tag to show a paged table list view with metro style.
+		    To use this, you need to include these files in the jsp file :
+		        1) metro-bootstrap.css
+                2) docs.css
+                3) table.css
+                4) jquery.min.js
+                5) metro-loader.js
+                6) utils.js
+            Attributes for this tag :
+                id - id of the div which will contain all elements
+                form - id(not name) of the form which contains all search conditions.
+                       attention : the action of the form should be "javascript:search()"
+                dataUrl - the url to request for data
+                autoSearch - to decide whether to do search just after jsp is loaded
+                title - title of the table
+                labels - labels to show on table's head, seperated by ","
+                attrs - attributes of some object to list in table, seperated by ","
+                width - width of each column, seperated by ","
+                selectType - radio or checkbox in the first column, MULTIPLE for
+                             checkbox and SINGLE for radio, none for show nothing
+                styleClass - the css class name of the div which will contain all elements
+                keyName - the attribute of some object to list in table, it will
+                          be used for the value of checkbox or radio
+                keyValueRender - the js function name of render for checkbox or radio's value
+                                 it will have 2 parameters in order, item and index
+                keyWidth - the width of the column contains checkbox or radio
+                sortAttrs - attributes can be used for sorting data, seperated by ","
+                defaultSortAttr - default sort attribute, server will list data 
+                                  sorting with this attribute when user haven't
+                                  given a sort
+                defaultSortType - the sort type for defaultSortAttr, ASC or DESC
+                emptyText - text shows in table when no data found
+                renders - js functions for all table columns except key column
+                pageName - the name of page object in request
+                recordChecked - to decide whether to remember those have checked
+                                when fliping
+                checkAction - the js function name when checkbox or radio clicked, 
+                              param is the element clicked. it will appear on "checkAll"
+                              and "itemKey" elements
+		    "]]>
+		</description>
+		<name>tableList</name>
+		<tag-class>net.beyondts.taglib.MetroStylePagedTableTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+		    <name>id</name>
+		    <required>false</required>
+		</attribute>
+        <attribute>
+            <name>form</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>dataUrl</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>autoSearch</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>labels</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>attrs</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>widths</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>selectType</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>keyName</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>keyValueRender</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>keyWidth</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sortAttrs</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>defaultSortAttr</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>defaultSortType</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>emptyText</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>renders</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>pageName</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>recordChecked</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>checkAction</name>
+            <required>false</required>
+        </attribute>
+	</tag>
+    <tag>
+        <name>right</name>
+        <tag-class>net.beyondts.taglib.RightTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <description>
+            <![CDATA[
+            Tag to determine whether to show right in it.
+            It can only contain one right.
+            name - name of the right, usually for a button or something used 
+                        as button, such as <a>,<img>, etc.
+            ]]>
+        </description>
+    </tag>
+    
+    <tag>
+        <name>sysprop</name>
+        <tag-class>net.beyondts.taglib.SystemPropertyTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>property</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+        <description>
+            <![CDATA[
+            Tag to print a property in System.
+            property - property name in System
+            ]]>
+        </description>
+    </tag>
+    
+    <tag>
+        <name>ifC</name>
+        <tag-class>net.beyondts.taglib.IfTagC</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>test</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <description>
+            <![CDATA[
+            Tag to extends from if tag of jstl.
+            test - The test condition that determines whether or
+                    not the body content should be processed. @{key} defined
+                    for value of system property.
+            ]]>
+        </description>
+    </tag>
+    
+    <tag>
+        <name>ifS2</name>
+        <tag-class>net.beyondts.taglib.IfTagS2</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>test</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <description>
+            <![CDATA[
+            Tag to extends from if tag of struts2.
+            test - The test condition that determines whether or
+                    not the body content should be processed. @{key} defined
+                    for value of system property.
+            ]]>
+        </description>
+    </tag>
+</taglib>

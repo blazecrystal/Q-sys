@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<!-- For professional support please see                            -->
+<!--    http://www.qos.ch/shop/products/professionalSupport         -->
+<!--                                                                -->
+<configuration scan="true" scanPeriod="1" debug="false">
+    <appender name="Q-sys" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${usr.dir}/logs/Q-sys.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${usr.dir}/logs/Q-sys.log.%d{yyyy-MM-dd}.zip</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d [%thread] %level %logger\(line:%line\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d [%thread] %level %logger\(line:%line\) - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<logger name="net.beyondts.qsys" additivity="false" level="DEBUG">
+		<appender-ref ref="stdout" />
+	</logger>
+    <logger name="java.sql" additivity="false" level="DEBUG">
+        <appender-ref ref="stdout" />
+    </logger>
+	<root level="ERROR">
+		<appender-ref ref="stdout" />
+	</root>
+</configuration>
